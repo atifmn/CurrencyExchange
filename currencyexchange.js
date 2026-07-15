@@ -1,20 +1,20 @@
+const exchange = require("./app.js");
 const prompt = require('prompt-sync')();
 
-let dollar = prompt("Enter USD Amount: ")
+async function testConversion() {
+    try {
+        let convFrom = await prompt("Convert from: ")
 
-let conv = prompt("Conversion from USD to: 1 = Euro, 2 = Peso, 3 = Rupee: ")
+        let currencyAmount = await prompt("Enter currency Amount: ")
 
-let dol = parseInt(dollar);
+        let convTo = await prompt("Convert to: ")
 
-if (conv == "1"){
-    console.log(dol * 0.87)
+        const result = await exchange.convertCurrency(parseInt(currencyAmount), convFrom, convTo);
+
+        console.log(`${currencyAmount} ${convFrom} = ${result} ${convTo}`);
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
 }
-else if (conv == "2"){
-    console.log(dol * 17.39)
-}
-else if (conv == "3"){
-    console.log(dol * 96.29)
-}
-else{
-    console.log("Invalid type, Try again.")
-}
+
+testConversion();
