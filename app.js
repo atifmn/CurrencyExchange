@@ -1,20 +1,13 @@
-require("dotenv").config();
+// Locate elements in the DOM (Document Object Model)
+const actionButton = document.getElementById('action-btn');
+const statusText = document.getElementById('status-text');
 
-async function convertCurrency(amount, fromCurrency, toCurrency) {
-    const API_KEY = process.env.API_KEY;
+// Track the state of the GUI application
+let clickCount = 0;
 
-    const url =
-        `https://v6.exchangerate-api.com/v6/${API_KEY}` +
-        `/pair/${fromCurrency}/${toCurrency}/${amount}`;
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    if (!response.ok || data.result !== "success") {
-        throw new Error(data["error-type"] || "Conversion failed");
-    }
-
-    return data.conversion_result;
-}
-
-module.exports = { convertCurrency };
+// Listen for a click event on the button
+actionButton.addEventListener('click', () => {
+    clickCount++;
+    statusText.innerText = `Success! The GUI button has been clicked ${clickCount} times.`;
+    statusText.style.color = '#28a745'; // Change text to green
+});
