@@ -1,4 +1,4 @@
-const exchange = require("./app.js");
+const exchange = require("./exchLogic.js");
 const prompt = require('prompt-sync')();
 
 async function testConversion() {
