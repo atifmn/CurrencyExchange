@@ -12,14 +12,14 @@
         <h1>Currency Exchange</h1>
 
         <h3>Convert from:</h3>
-        <select> 
+        <select id="ConvFrom"> 
             <option value="USD"> USD </option>
             <option value="EUR"> EUR </option>
             <option value="MXN"> MXN </option>
         </select>
 
         <h3>Convert to:</h3>
-        <select> 
+        <select id="ConvTo"> 
             <option value="USD"> USD </option>
             <option value="EUR"> EUR </option>
             <option value="MXN"> MXN </option>
@@ -30,7 +30,7 @@
         <label for="amount">Currency Amount:</label>
         <input type="number" id="currency" name="currency" min="0.00" placeholder="0.00" step="0.01"><br><br>
 
-        <button id="action-btn">Trigger Action</button>
+        <button id="action-btn">Convert</button>
 
         <p id="result-text">Click the button to get the Currency Exchange results.</p>
 
