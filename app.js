@@ -1,5 +1,3 @@
-const exchange = require("./exchLogic.js");
-
 // Locate elements in the DOM (Document Object Model)
 const actionButton = document.getElementById('action-btn');
 const resultTxt = document.getElementById('result-text');
@@ -10,18 +8,24 @@ const currency = document.getElementById('currency');
 
 
 // Listen for a click event on the button
-actionButton.addEventListener('click', () => {
-
-    try{
+actionButton.addEventListener('click', async () => {
+    try {
         const amount = parseFloat(currency.value);
-        const from = convFrom.trim().toUpperCase();
-        const to = convTo.trim().toUpperCase();
+        const from = convFrom.value.trim().toUpperCase();
+        const to = convTo.value.trim().toUpperCase();
 
-        const result = exchange.convertCurrency(amount, from, to);
+        const response = await fetch(
+            `/convert?amount=${amount}&from=${from}&to=${to}`
+        );
 
-        resultTxt.textContent = amount + " " + from + " = " + result + " " + to;
-    } catch (error){
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Conversion failed");
+        }
+
+        resultTxt.textContent = "" + amount + " " + from + " = " +  data.result + " " + to;
+    } catch (error) {
         resultTxt.textContent = `Error: ${error.message}`;
     }
-    
 });
