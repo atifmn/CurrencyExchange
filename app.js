@@ -35,6 +35,20 @@ const convTo = document.getElementById('ConvTo');
 const currency = document.getElementById('currency');
 
 
+function addCurrencyOptions(currElement){
+
+    currencies.forEach((currentCurrencyCode) => {
+
+        const option = document.createElement("option");
+        option.value = currentCurrencyCode;
+        option.textContent = currentCurrencyCode;
+        currElement.appendChild(option)
+
+    });
+}
+
+addCurrencyOptions(convFrom);
+addCurrencyOptions(convTo);
 
 // Listen for a click event on the button
 actionButton.addEventListener('click', async () => {
