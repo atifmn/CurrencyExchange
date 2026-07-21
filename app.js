@@ -1,3 +1,32 @@
+// List of 25 most popular currencies
+const currencies = [
+    "USD",
+    "EUR",
+    "JPY",
+    "GBP",
+    "AUD",
+    "CAD",
+    "CHF",
+    "CNY",
+    "SEK",
+    "MXN",
+    "NZD",
+    "SGD",
+    "HKD",
+    "NOK",
+    "KRW",
+    "TRY",
+    "INR",
+    "RUB",
+    "BRL",
+    "ZAR",
+    "DKK",
+    "PLN",
+    "TWD",
+    "THB",
+    "MYR"
+];
+
 // Locate elements in the DOM (Document Object Model)
 const actionButton = document.getElementById('action-btn');
 const resultTxt = document.getElementById('result-text');
